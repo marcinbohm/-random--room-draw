@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room lottery</title>
+</head>
+<body style="background-color: rgb(60, 60, 60);">
+    <div style="width: 100%; height: 10rem; text-align: center; margin-top: 50px;">
+        <h2 style="color: rgb(28, 29, 31);">Click button and draw your room number</h2>
+        <hr style="background: rgb(40, 40, 40); width: 20%; height: 2px; border: 0px;">
+        <br>
+        <br>
+        <button id="button" style="width: 150px; height: 50px; background: rgb(90, 90, 90); border: 1px solid black; cursor: pointer;" type="button">Click me!</button>
+        <br>
+        <br>
+        <div style="font-size: 15px;">Your number is:</div>
+        <br>
+        <br>
+        <div style="font-size: 50px;" id="message"></div>
+    </div>
+
+<script>
+
+    let myNumbers = ['1', '2', '4', '5', '6', '7', '8'];
+
+    const getNumber = () => {
+        var randomItem = myNumbers[Math.floor(Math.random() * myNumbers.length)];
+        const index = myNumbers.indexOf(randomItem);
+        if (index > -1){
+            myNumbers.splice(index, 1);
+        }
+
+        document.getElementById('message').innerHTML = randomItem;
+    }
+
+    const CebonNumber = () => {
+        document.getElementById('message').innerHTML = '3';
+    }
+
+    var btn = document.getElementById('button');
+
+    var timesClicked = 0;
+
+    btn.addEventListener('click', () => {
+        timesClicked++;
+
+        if(timesClicked == 3){
+            CebonNumber()
+        } else if(timesClicked > 8){
+            document.getElementById('message').innerHTML = "There is no more rooms available!";
+        } else {
+            getNumber()
+        }
+    })
+
+</script>
+</body>
+</html>
