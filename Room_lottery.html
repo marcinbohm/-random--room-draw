@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Room lottery</title>
+    <script src="RoomLottery.js"></script>
 </head>
 <body style="background-color: rgb(60, 60, 60);">
     <div style="width: 100%; height: 10rem; text-align: center; margin-top: 50px;">
@@ -19,41 +20,5 @@
         <br>
         <div style="font-size: 50px;" id="message"></div>
     </div>
-
-<script>
-
-    let myNumbers = ['1', '2', '4', '5', '6', '7', '8'];
-
-    const getNumber = () => {
-        var randomItem = myNumbers[Math.floor(Math.random() * myNumbers.length)];
-        const index = myNumbers.indexOf(randomItem);
-        if (index > -1){
-            myNumbers.splice(index, 1);
-        }
-
-        document.getElementById('message').innerHTML = randomItem;
-    }
-
-    const CebonNumber = () => {
-        document.getElementById('message').innerHTML = '3';
-    }
-
-    var btn = document.getElementById('button');
-
-    var timesClicked = 0;
-
-    btn.addEventListener('click', () => {
-        timesClicked++;
-
-        if(timesClicked == 3){
-            CebonNumber()
-        } else if(timesClicked > 8){
-            document.getElementById('message').innerHTML = "There is no more rooms available!";
-        } else {
-            getNumber()
-        }
-    })
-
-</script>
 </body>
 </html>
